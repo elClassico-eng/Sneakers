@@ -30,6 +30,11 @@ header {
     p {
         margin: 0;
     }
+    .offer {
+        &:hover {
+            opacity: 0.9;
+        }
+    }
 }
 
 .content {
@@ -48,7 +53,8 @@ header {
     padding: 20px;
     width: 210px;
     border-radius: 40px;
-    margin-right: 40px;
+    margin-right: 20px;
+    margin-bottom: 20px;
     transition: box-shadow 0.2s ease-in-out, transform 0.3s linear;
 
     .favorit {
@@ -74,16 +80,17 @@ header {
     h5 {
         font-weight: 300;
         font-size: 14px;
+        margin-top: 0px;
     }
-}
 
-.button {
-    background: #ffffff;
-    border: 1px solid #f2f2f2;
-    border-radius: 8px;
-    height: 32;
-    width: 32px;
-    cursor: pointer;
+    button {
+        border: none;
+        background: transparent;
+    }
+
+    .plus {
+        cursor: pointer;
+    }
 }
 
 .search-block {
@@ -99,41 +106,6 @@ header {
     }
 }
 
-.overlay {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
-    z-index: 1;
-}
-
-.drawer {
-    flex-direction: column;
-    position: absolute;
-    width: 420px;
-    right: 0;
-    height: 100%;
-    background: #ffffff;
-    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-
-    .items {
-        overflow: auto;
-        flex: 1;
-        margin-bottom: 20px;
-    }
-
-    h2 {
-        margin: 0;
-        font-size: 24px;
-
-        img {
-            cursor: pointer;
-        }
-    }
-}
 .cartItem {
     border: 1px solid #f3f3f3;
     border-radius: 20px;
@@ -172,6 +144,10 @@ header {
     .greenBtn {
         position: relative;
 
+        &:disabled {
+            animation: btn-loading 1.4s ease-in infinite;
+        }
+
         img {
             position: absolute;
             right: 30px;
@@ -187,6 +163,23 @@ header {
                 transform: translateX(5px);
             }
         }
+    }
+}
+
+.cartEmpty {
+    .greenBtn {
+        position: relative;
+
+        img {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            animation: transform 1.4s ease-in infinite;
+        }
+    }
+
+    p {
+        text-align: center;
     }
 }
 
@@ -218,6 +211,11 @@ header {
     &:active {
         background: darken($color: #9dd558, $amount: 5%);
     }
+
+    &:disabled {
+        background-color: #bebebe;
+        cursor: default;
+    }
 }
 
 .removeBtn {
@@ -226,6 +224,18 @@ header {
     transition: opacity 0.2s ease-in-out;
 
     &:hover {
+        opacity: 1;
+    }
+}
+
+@keyframes btn-loading {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
         opacity: 1;
     }
 }
